@@ -19,7 +19,7 @@ namespace GOOS_SampleTests.steps
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            this._budgetController = new BudgetController();
+            this._budgetController = new BudgetController(new BudgetService());
         }
 
 
