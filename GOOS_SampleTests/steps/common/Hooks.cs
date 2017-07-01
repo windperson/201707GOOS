@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FluentAutomation;
+using GOOS_Sample.Controllers;
+using GOOS_Sample.Models;
 using GOOS_SampleTests.DataModelsForIntegrationTest;
+using Microsoft.Practices.Unity;
 using TechTalk.SpecFlow;
 
 namespace GOOS_SampleTests.steps.common
@@ -12,6 +15,15 @@ namespace GOOS_SampleTests.steps.common
     public sealed class Hooks
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
+
+        public static UnityContainer UnityContainer { get; set; }
+
+        [BeforeTestRun]
+        public static void RegisterDIContainer()
+        {
+            UnityContainer = new UnityContainer();
+            UnityContainer.RegisterType<IBudgetService, BudgetService>();
+        }
 
         [BeforeScenario()]
         public void BeforeScenarioCleanTable()
