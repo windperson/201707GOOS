@@ -31,7 +31,7 @@ namespace GOOS_Sample.Controllers
 
             this.budgetService.Create(model);
 
-            ViewBag.Message = "added successfully";
+            //ViewBag.Message = "added successfully";
             return View(model);
         }
     }

@@ -18,7 +18,7 @@ namespace GOOS_SampleTests.Controllers
     {
         private BudgetController _budgetController;
         private IBudgetService _budgetService = Substitute.For<IBudgetService>();
-        private IRepository<Budget> _budgetRepositoryStub;
+        private IRepository<Budget> _budgetRepositoryStub = Substitute.For<IRepository<Budget>>();
 
 
         [TestMethod()]

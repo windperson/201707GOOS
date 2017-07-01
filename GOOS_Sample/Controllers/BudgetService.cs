@@ -16,19 +16,29 @@ namespace GOOS_Sample.Controllers
 
         public void Create(BudgetAddViewModel model)
         {
-
-            //using (var dbcontext = new BudgetDBEntities())
+            //var budget = new Budget()
             //{
-            //    var budget = new Budget() { Amount = model.Amount, YearMonth = model.Month };
-            //    dbcontext.Budgets.Add(budget);
-            //    dbcontext.SaveChanges();
-            //}
-            var budget = new Budget()
+            //    Amount = model.Amount,
+            //    YearMonth = model.Month
+            //};
+            //this._budgetRepository.Save(budget);
+
+            var budget = this._budgetRepository.Read(x => x.YearMonth == model.Month);
+            if (budget == null)
             {
-                Amount = model.Amount,
-                YearMonth = model.Month
-            };
-            this._budgetRepository.Save(budget);
+                this._budgetRepository.Save(new Budget() { Amount = model.Amount, YearMonth = model.Month });
+
+                var handler = this.Created;
+                handler?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                budget.Amount = model.Amount;
+                this._budgetRepository.Save(budget);
+
+                var handler = this.Updated;
+                handler?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public event EventHandler Created;
