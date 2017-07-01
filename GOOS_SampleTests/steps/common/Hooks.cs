@@ -8,6 +8,7 @@ using GOOS_Sample.Models;
 using GOOS_SampleTests.DataModelsForIntegrationTest;
 using Microsoft.Practices.Unity;
 using TechTalk.SpecFlow;
+using Budget = GOOS_Sample.Models.DataModels.Budget;
 
 namespace GOOS_SampleTests.steps.common
 {
@@ -22,6 +23,7 @@ namespace GOOS_SampleTests.steps.common
         public static void RegisterDIContainer()
         {
             UnityContainer = new UnityContainer();
+            UnityContainer.RegisterType<IRepository<Budget>, BudgetRepository>();
             UnityContainer.RegisterType<IBudgetService, BudgetService>();
         }
 
