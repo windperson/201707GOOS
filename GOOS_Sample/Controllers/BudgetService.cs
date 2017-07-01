@@ -1,4 +1,5 @@
-﻿using GOOS_Sample.Models;
+﻿using System;
+using GOOS_Sample.Models;
 using GOOS_Sample.Models.DataModels;
 using GOOS_Sample.Models.ViewModels;
 
@@ -29,5 +30,8 @@ namespace GOOS_Sample.Controllers
             };
             this._budgetRepository.Save(budget);
         }
+
+        public event EventHandler Created;
+        public event EventHandler Updated;
     }
 }

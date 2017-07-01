@@ -5,6 +5,11 @@ namespace GOOS_Sample.Models
 {
     public class BudgetRepository : IRepository<Budget>
     {
+        public Budget Read(Func<Budget, bool> func)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(Budget budget)
         {
 
@@ -14,5 +19,7 @@ namespace GOOS_Sample.Models
                 dbcontext.SaveChanges();
             }
         }
+
+        
     }
 }
