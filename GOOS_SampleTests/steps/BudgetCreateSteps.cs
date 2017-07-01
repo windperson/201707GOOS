@@ -17,14 +17,6 @@ namespace GOOS_SampleTests.steps
             this._budgetCreatePage = new BudgetCreatePage(this);
         }
 
-        [BeforeScenario()]
-        public void BeforeScenario()
-        {
-            SeleniumWebDriver.Bootstrap(SeleniumWebDriver.Browser.Chrome);
-        }
-
-
-
         [Given(@"go to adding budget page")]
         public void GivenGoToAddingBudgetPage()
         {
