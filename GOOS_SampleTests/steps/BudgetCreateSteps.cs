@@ -13,7 +13,6 @@ namespace GOOS_SampleTests.steps
     {
         private BudgetCreatePage _budgetCreatePage;
 
-
         public BudgetCreateSteps()
         {
             this._budgetCreatePage = new BudgetCreatePage(this);
@@ -39,17 +38,5 @@ namespace GOOS_SampleTests.steps
         {
             this._budgetCreatePage.ShouldDisplay(message);
         }
-
-        [Given(@"Budget table existed budgets")]
-        public void GivenBudgetTableExistedBudgets(Table table)
-        {
-            var budgets = table.CreateSet<Budget>();
-            using (var dbcontext = new BudgetDBEntitiesForTest())
-            {
-                dbcontext.Budgets.AddRange(budgets);
-                dbcontext.SaveChanges();
-            }
-        }
-
     }
 }

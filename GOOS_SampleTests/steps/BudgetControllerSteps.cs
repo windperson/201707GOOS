@@ -60,19 +60,6 @@ namespace GOOS_SampleTests.steps
             }
         }
 
-        [Given(@"Budget table existed budgets")]
-        public void GivenBudgetTableExistedBudgets(Table table)
-        {
-
-            //same with BudgetCreateSteps
-            var budgets = table.CreateSet<Budget>();
-            using (var dbcontext = new BudgetDBEntitiesForTest())
-            {
-                dbcontext.Budgets.AddRange(budgets);
-                dbcontext.SaveChanges();
-            }
-        }
-
         [Then(@"ViewBag should have a message for updating successfully")]
         public void ThenViewBagShouldHaveAMessageForUpdatingSuccessfully()
         {
