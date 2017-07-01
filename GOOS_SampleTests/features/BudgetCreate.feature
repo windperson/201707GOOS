@@ -1,4 +1,5 @@
 ﻿@web
+@CleanBudgets
 Feature: BudgetCreate
 
 Scenario: Add a budget successfully
