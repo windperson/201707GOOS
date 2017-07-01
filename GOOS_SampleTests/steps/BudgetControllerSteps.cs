@@ -20,6 +20,10 @@ namespace GOOS_SampleTests.steps
         public void BeforeScenario()
         {
             this._budgetController = new BudgetController();
+            using (var dbContext= new BudgetDBEntitiesForTest())
+            {
+                dbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE Budgets");
+            }
         }
 
 
