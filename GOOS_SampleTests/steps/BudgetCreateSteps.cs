@@ -31,19 +31,13 @@ namespace GOOS_SampleTests.steps
             this._budgetCreatePage.Go();
         }
         
-        [Given(@"I add a budget (.*) for ""(.*)""")]
+        [When(@"I add a budget (.*) for ""(.*)""")]
         public void GivenIAddABudgetFor(int amount, string yearMonth)
         {
             this._budgetCreatePage
                 .Amount(amount)
                 .Month(yearMonth)
                 .AddBudget();
-        }
-        
-        [When(@"I press add")]
-        public void WhenIPressAdd()
-        {
-            ScenarioContext.Current.Pending();
         }
         
         [Then(@"It should dispaly ""(.*)""")]
